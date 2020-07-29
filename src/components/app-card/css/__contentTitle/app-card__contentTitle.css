@@ -1,0 +1,26 @@
+.app-card__contentTitle {
+    margin: 0 0 4px 0;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 16px;
+    /* identical to box height, or 100% */
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    color: #000000;
+}
+
+@media screen and (max-width: 768px) {
+    .app-card__contentTitle {
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .app-card__contentTitle {
+        font-size: 12px;
+    }
+}

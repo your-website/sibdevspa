@@ -1,0 +1,41 @@
+.sidebar__link {
+    text-decoration: none;
+    list-style: none;
+    color: #000;
+    transition: color 0.2s ease, content 0.2s ease;
+    position: relative;
+    display: block;
+}
+
+.sidebar__link:hover {
+    text-decoration: none;
+    list-style: none;
+    color: #34ABE0;
+}
+
+.sidebar__link:before {
+    content: none;
+}
+
+.sidebar__link:hover:before {
+    position: absolute;
+    content: '';
+    top: 2px;
+    left: -42px;
+    height: 25px;
+    border: 2px solid #34ABE0;
+}
+
+.app-side-bar__icon-path {
+    transition: stroke 0.2s ease;
+}
+
+.sidebar__link:hover .app-side-bar__icon-path {
+    stroke: #34ABE0;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar__link {
+        display: none;
+    }
+}

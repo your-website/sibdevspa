@@ -1,0 +1,12 @@
+@import './__container/app__container.css';
+@import './__container-sidebar/app__container-sidebar.css';
+@import './__container-page/app__container-page.css';
+
+.app {
+    height: 100%;
+    display: flex;
+}
+
+.main {
+    height: 100%;
+}

@@ -1,0 +1,9 @@
+.sidebar__element {
+    list-style: none;
+    margin-bottom: 40px;
+    padding: 0;
+}
+
+.sidebar__element:first-of-type {
+    margin-bottom: 60px;
+}

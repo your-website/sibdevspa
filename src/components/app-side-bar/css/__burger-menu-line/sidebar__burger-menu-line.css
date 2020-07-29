@@ -1,0 +1,10 @@
+@import './_one-open/sidebar__burger-menu-line_one-open.css';
+@import './_two-open/sidebar__burger-menu-line_two-open.css';
+@import './_three-open/sidebar__burger-menu-line_three-open.css';
+
+.sidebar__burger-menu-line {
+    width: 26px;
+    height: 2px;
+    background-color: #000;
+    margin-bottom: 7px;
+}

@@ -1,0 +1,10 @@
+@import './__container/header__container.css';
+@import './__content-title/header__content-title.css';
+@import './__paragraph/header__paragraph.css';
+@import './__input/header__input.css';
+@import './__container-input/header__container-input.css';
+@import './__icon/header__icon.css';
+
+.header {
+    background-color: #fff;
+}

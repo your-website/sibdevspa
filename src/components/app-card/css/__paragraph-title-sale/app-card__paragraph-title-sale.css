@@ -1,0 +1,21 @@
+.app-card__paragraph-title-sale {
+    margin: 0 0 6px 0;
+
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 28px;
+    /* identical to box height, or 78% */
+    display: flex;
+    align-items: center;
+
+    color: #DF212D;
+}
+
+@media screen and (max-width: 470px) {
+    .app-card__paragraph-title-sale {
+        font-size: 28px;
+        margin-bottom: 0;
+    }
+}

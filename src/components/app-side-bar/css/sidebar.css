@@ -1,0 +1,35 @@
+@import './__container/sidebar__container.css';
+@import './__element/sidebar__element.css';
+@import './__link/sidebar__link.css';
+@import './__list/sidebar__list.css';
+@import './__paragraph/sidebar__paragraph.css';
+@import './__icon/app-side-bar__icon.css';
+@import './__burger-menu-line/sidebar__burger-menu-line.css';
+@import './__logo/sidebar__logo.css';
+@import './__link-opacity/sidebar__link-opacity.css';
+
+.sidebar {
+    height: 100%;
+    background-color: #F3F4F9;
+    position: fixed;
+    width: 240px;
+    z-index: 2;
+
+    transition: width 0.8s ease, transform 1s ease;
+    transform: translateX(0);
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        height: 100%;
+        background-color: #F3F4F9;
+        position: fixed;
+        width: 104px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .sidebar {
+        transform: translateX(-95px);
+    }
+}

@@ -1,0 +1,7 @@
+.sidebar__burger-menu-line_one-open {
+    transform: rotate(0) translateX(0) translateY(0);
+}
+
+.sidebar__burger-menu-line_one-close {
+    transform: rotate(45deg) translateX(7px) translateY(5px);
+}

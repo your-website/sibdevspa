@@ -1,0 +1,36 @@
+.app-card__item {
+    position: relative;
+    background-image: url('cover.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 20px 20px 0;
+
+    list-style: none;
+    height: 161px;
+    width: 347px;
+
+    cursor: pointer;
+
+    transition: background-image 0.2s ease, background-color 0.2s ease;
+}
+
+.app-card__item:hover {
+    background-image: url('hover.png');
+    background-size: contain;
+    background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+    .app-card__item {
+        height: 144px;
+        width: 296px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .app-card__item {
+        height: 130px;
+        width: 268px;
+        margin-right: 0;
+    }
+}

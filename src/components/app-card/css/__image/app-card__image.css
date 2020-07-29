@@ -1,0 +1,23 @@
+.app-card__image {
+    position: absolute;
+    top: 7px;
+    right: 5px;
+    width: 130px;
+    height: 151px;
+}
+
+@media screen and (max-width: 768px) {
+    .app-card__image {
+        width: 104px;
+        height: 134px;
+        top: 2px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .app-card__image {
+        width: 89px;
+        height: 115px;
+        top: 4px;
+    }
+}

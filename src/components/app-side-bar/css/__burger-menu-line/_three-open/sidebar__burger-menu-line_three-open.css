@@ -1,0 +1,7 @@
+.sidebar__burger-menu-line_three-open {
+    transform: rotate(0);
+}
+
+.sidebar__burger-menu-line_three-close {
+    transform: rotate(-45deg);
+}

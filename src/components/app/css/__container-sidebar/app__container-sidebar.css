@@ -1,0 +1,15 @@
+.app__container-sidebar {
+    min-width: 240px;
+}
+
+@media screen and (max-width: 768px) {
+    .app__container-sidebar {
+        min-width: 104px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .app__container-sidebar {
+        min-width: 2px;
+    }
+}

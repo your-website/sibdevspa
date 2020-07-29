@@ -1,0 +1,7 @@
+.sidebar__burger-menu-line_two-open {
+    display: block;
+}
+
+.sidebar__burger-menu-line_two-close {
+    display: none;
+}
