@@ -3,9 +3,11 @@
 @import "__content-subtitle/app-search-video__content-subtitle.css";
 @import "__container/app-search-video__container.css";
 @import "__icon/app-search-video__icon.css";
+@import "__button/app-search-video__button.css";
 
 .app-search-video {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }

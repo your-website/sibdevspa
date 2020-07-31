@@ -1,0 +1,6 @@
+.favorites__list {
+    max-width: 65%;
+    margin: 0 auto;
+    background-color: #fff;
+    cursor: pointer;
+}

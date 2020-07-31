@@ -8,19 +8,19 @@ import AppCardDescription from './css/__description/app-card__description.js';
 class AppCard extends Component {
 
     render() {
-        const { blockPosition, itemCardPosition } = this.props;
+        const { dataVideo, blockPosition, itemCardPosition } = this.props;
 
-        const elements = this.props.dataVideo.map((item) => {
+        const elements = dataVideo.map((item) => {
             const { id } = item;
             const { videoId } = id;
             const link = `https://www.youtube.com/embed/${videoId}`;
 
-            const dataDescription = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=AIzaSyDTLz2YAI3Y5hcrm1vAaaGpGmx89JK4AGM`;
+            const dataDescription = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=AIzaSyAAzHm2B7WC2O6w8y3_8RGdWrMcVSUugV8`;
 
             return (
                 <div key={ link } className={itemCardPosition}>
                     <iframe className="app-card__iframe" src={link} frameBorder="0"
-                            allowFullScreen/>
+                            allowFullScreen title={ link }/>
                             <AppCardDescription dataDescription={ dataDescription }/>
                 </div>
             );
