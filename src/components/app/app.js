@@ -135,9 +135,7 @@ class App extends Component {
     };
 
     userOk = (login) => {
-        if (login) {
-            this.setState({user: login})
-        }
+        this.setState({user: login})
     };
 
   render() {
@@ -145,18 +143,11 @@ class App extends Component {
 
     const { dataVideo, descriptionVideo, blockPosition, itemCardPosition, dataSearch, user } = this.state;
 
-      const content = !user ?
+      const content = user ?
+
           (
               <div className="app">
-                  <Route path="/login"  render={()=>
-                      <Login users={ users } userOk={ this.userOk }
-                      />}
-                  />
-              </div>
-          ) :
-          (
-              <div className="app">
-                  <AppHeader/>
+                  <AppHeader userOk={ this.userOk }/>
                   <main className="main">
                       <Route path="/"  render={()=>
                           <AppSearchVideo searchData={ this.searchData }
@@ -176,6 +167,14 @@ class App extends Component {
                       />
                       <Route path="/favorites"  render={()=><Favorites dataSearch={ dataSearch } searchStart={ this.searchStart } saveDataSearch={ this.saveDataSearch }/>}/>
                   </main>
+              </div>
+          ) :
+          (
+              <div className="app">
+                  <Route path="/login"  render={()=>
+                      <Login users={ users } userOk={ this.userOk }
+                      />}
+                  />
               </div>
           );
 

@@ -3,12 +3,15 @@ import { Menu } from 'antd';
 
 import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
-import { SmileTwoTone, HeartTwoTone, CheckCircleTwoTone } from '@ant-design/icons';
 
 class AppHeader extends Component {
     state = {
         current: 'mail',
     };
+
+    exit() {
+        this.props.userOk(false);
+    }
 
     render() {
         const { current } = this.state;
@@ -44,7 +47,7 @@ class AppHeader extends Component {
                     </Menu>
                     <Menu className="header__menu header__menu_position" selectedKeys={[current]} mode="horizontal">
                         <Menu.Item>
-                            <NavLink className="header__link" to="/login" rel="noopener noreferrer">
+                            <NavLink onClick={(e) => this.exit(e) } className="header__link" to="/login" rel="noopener noreferrer">
                                 Выйти
                             </NavLink>
                         </Menu.Item>
