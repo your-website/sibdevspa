@@ -1,46 +1,52 @@
 import './css/header.css';
-
+import { Menu } from 'antd';
 
 import React, { Component } from 'react';
 
 class AppHeader extends Component {
     state = {
-        term: ''
+        current: 'mail',
     };
-
-    inputChange = (event) => {
-        const term = event.target.value
-        this.setState(() => {
-            return {
-                term: term
-            };
-        });
-
-        this.props.onSearchChange(term);
-    };
-
 
     render() {
-        const { title, headerPlaceholder } = this.props;
+        const { SubMenu } = Menu;
+        const { current } = this.state;
 
         return (
-            <div className="header__container">
-                <h1 className="header__content-title">{title}</h1>
-                <div className="header__container-input">
-                    <svg className="header__icon" width="20" height="20" viewBox="0 0 20 20" fill="none"
-                         xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M4.16667 9.16667C4.16667 12.8486 7.15143 15.8333 10.8333 15.8333C14.5152 15.8333 17.5 12.8486 17.5 9.16667C17.5 5.48477 14.5152 2.5 10.8333 2.5C7.15143 2.5 4.16667 5.48477 4.16667 9.16667Z"
-                            stroke="#D6D6D6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        <path d="M2.5 17.5L6.125 13.875" stroke="#D6D6D6" strokeWidth="2" strokeLinecap="round"
-                              strokeLinejoin="round"/>
+            <div className="header">
+                <nav className="header__navigation">
+                    <svg className="header__logo" width="48" height="48" viewBox="0 0 88 88" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clipPath="url(#clip0)">
+                            <path fillRule="evenodd" clipRule="evenodd" d="M59.1488 43.5667L24.683 60.9559V79.399L59.1488 62.0098V43.5667Z" fill="#1390E5"/>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M24.683 26.1787L59.1487 43.5679V62.0111L24.683 44.6218V26.1787Z" fill="#1180CB"/>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M59.1488 8.79071L24.683 26.1799V44.623L59.1488 27.2338V8.79071Z" fill="#35A2EC"/>
+                        </g>
+                        <defs>
+                            <clipPath id="clip0">
+                                <rect width="88" height="88" fill="white"/>
+                            </clipPath>
+                        </defs>
                     </svg>
-                    <input className="header__input"
-                           onChange={ this.inputChange }
-                           value={ this.state.term }
-                           placeholder={headerPlaceholder}
-                           type="text"/>
-                </div>
+                    <Menu className="header__menu" selectedKeys={[current]} mode="horizontal">
+                        <Menu.Item >
+                            <a className="header__link" href="#" rel="noopener noreferrer">
+                                Поиск
+                            </a>
+                        </Menu.Item>
+                        <Menu.Item >
+                            <a className="header__link" href="#" rel="noopener noreferrer">
+                                Избраннное
+                            </a>
+                        </Menu.Item>
+                    </Menu>
+                    <Menu className="header__menu header__menu_position" selectedKeys={[current]} mode="horizontal">
+                        <Menu.Item>
+                            <a className="header__link" href="#" rel="noopener noreferrer">
+                                Выйти
+                            </a>
+                        </Menu.Item>
+                    </Menu>
+                </nav>
             </div>
         )
     }

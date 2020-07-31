@@ -1,2 +1,3 @@
-import AppCard from './app-card.js';
+
+import AppCard from './app-card';
 export default AppCard;

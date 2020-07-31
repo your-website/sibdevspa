@@ -1,0 +1,6 @@
+.app-search-video__container.app-search-video__container_position {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 20px 20px 0 0;
+}

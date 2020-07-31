@@ -1,0 +1,4 @@
+.app-card__list.app-card__list_position {
+    flex-direction: row;
+    width: 70%;
+}

@@ -1,0 +1,6 @@
+@import "_position/header__menu_position.css";
+
+.header__menu {
+    border-bottom: none;
+    width: 60%;
+}

@@ -1,0 +1,8 @@
+@import "_position/app-search-video__container_position.css";
+
+.app-search-video__container {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: 5px;
+}

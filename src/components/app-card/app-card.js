@@ -1,27 +1,38 @@
-import React from 'react';
+
+import React, { Component } from 'react';
+
 import './css/app-card.css';
-const AppCard = ({ data }) => {
-    const elements = data.map((item) => {
-        const { contentTitle, subtitle, titleSale, sale, img, imgText } = item;
+import AppCardDescription from './css/__description/app-card__description.js';
+
+
+class AppCard extends Component {
+
+    render() {
+        const { blockPosition, itemCardPosition } = this.props;
+
+        const elements = this.props.dataVideo.map((item) => {
+            const { id } = item;
+            const { videoId } = id;
+            const link = `https://www.youtube.com/embed/${videoId}`;
+
+            const dataDescription = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=AIzaSyDTLz2YAI3Y5hcrm1vAaaGpGmx89JK4AGM`;
+
+            return (
+                <div key={ link } className={itemCardPosition}>
+                    <iframe className="app-card__iframe" src={link} frameBorder="0"
+                            allowFullScreen/>
+                            <AppCardDescription dataDescription={ dataDescription }/>
+                </div>
+            );
+        });
+
 
         return (
-            <li  key={ imgText } className="app-card__item">
-                <div className="app-card__container">
-                    <h3 className="app-card__contentTitle">{contentTitle}</h3>
-                    <p className="app-card__paragraph-subtitle">{subtitle}</p>
-                    <p className="app-card__paragraph-title-sale">{titleSale}</p>
-                    <p className="app-card__paragraph-sale">{sale}</p>
-                </div>
-                <img className="app-card__image" src={ img } alt={ imgText }/>
-            </li>
+            <ul className={ blockPosition }>
+                { elements }
+            </ul>
         );
-    });
-
-    return (
-        <ul className="app-card__list">
-            { elements }
-        </ul>
-    );
-};
+    };
+}
 
 export default AppCard;
