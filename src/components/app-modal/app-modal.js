@@ -82,7 +82,6 @@ class ModalComponent extends Component {
 
     render() {
         const { dataField, disabledInput } = this.props;
-        console.log(dataField.title);
         const { enterOk } = this.state;
         const modalInputRequest = disabledInput ? <Input className="modal__input" placeholder={ dataField.searchWord } disabled/> : <Input className="modal__input" placeholder={ dataField.searchWord } onChange={(e) =>  this.setSearchWord(e.target.value) } defaultValue={ dataField.searchWord }/>;
 

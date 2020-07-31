@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from "react-router-dom";
+import login from '../../login';
 
 import './css/app.css';
 import '../app-main/css/main.css';
@@ -8,6 +9,7 @@ import AppHeader from '../app-header/app-header'
 import AppSearchVideo from '../app-search-video'
 import AppCard from "../app-card";
 import Favorites from "../app-favorits";
+import Login from '../app-login';
 
 class App extends Component {
 
@@ -17,33 +19,35 @@ class App extends Component {
     apiKey: 'AIzaSyAWNQTxM_QUduebjbAVluYQr123b5-E9mA',
     blockPosition: 'app-card__list',
     itemCardPosition: 'app-card__item',
+    user: false,
+    users: [],
     dataSearch: [
         {
             searchWord: 'москва',
-            title: 'кот',
+            title: 'москва',
             sort: 'rating',
             count: 3,
             id: 1
         },
         {
             searchWord: 'красноярск',
-            title: 'путин',
+            title: 'красноярск',
             sort: 'rating',
             count: 25,
             id: 2
 
         },
         {
-            searchWord: 'wer',
-            title: 'gta',
+            searchWord: 'хабаровск',
+            title: 'хабаровск',
             sort: 'rating',
             count: 13,
             id: 3
 
         },
         {
-            searchWord: 'путин',
-            title: 'путин',
+            searchWord: 'react',
+            title: 'react',
             sort: 'rating',
             count: 1,
             id: 4
@@ -52,7 +56,7 @@ class App extends Component {
     ],
   };
 
-  searchData = (data) => {
+    searchData = (data) => {
     this.setState(() => {
       return {
         dataVideo: data
@@ -130,34 +134,54 @@ class App extends Component {
         this.setState({dataSearch: result})
     };
 
-  render() {
+    userOk = (login) => {
+        if (login) {
+            this.setState({user: login})
+        }
+    };
 
-    const { dataVideo, descriptionVideo, blockPosition, itemCardPosition, dataSearch } = this.state;
+  render() {
+    const users = login.users;
+
+    const { dataVideo, descriptionVideo, blockPosition, itemCardPosition, dataSearch, user } = this.state;
+
+      const content = !user ?
+          (
+              <div className="app">
+                  <Route path="/login"  render={()=>
+                      <Login users={ users } userOk={ this.userOk }
+                      />}
+                  />
+              </div>
+          ) :
+          (
+              <div className="app">
+                  <AppHeader/>
+                  <main className="main">
+                      <Route path="/"  render={()=>
+                          <AppSearchVideo searchData={ this.searchData }
+                                          changeBlockPositionAppCard={ this.changeBlockPositionAppCard }
+                                          changeItemPositionAppCard={ this.changeItemPositionAppCard }
+                                          blockPosition={ blockPosition }
+                                          searchStart={ this.searchStart }
+                                          addData={ this.addData}
+                          />}
+                      />
+                      <Route path="/"  render={()=>
+                          <AppCard dataVideo={ dataVideo }
+                                   descriptionVideo={ descriptionVideo }
+                                   blockPosition={ blockPosition }
+                                   itemCardPosition={ itemCardPosition }
+                          />}
+                      />
+                      <Route path="/favorites"  render={()=><Favorites dataSearch={ dataSearch } searchStart={ this.searchStart } saveDataSearch={ this.saveDataSearch }/>}/>
+                  </main>
+              </div>
+          );
 
     return (
         <BrowserRouter>
-          <div className="app">
-            <AppHeader/>
-              <main className="main">
-                  <Route path="/search"  render={()=>
-                      <AppSearchVideo searchData={ this.searchData }
-                         changeBlockPositionAppCard={ this.changeBlockPositionAppCard }
-                         changeItemPositionAppCard={ this.changeItemPositionAppCard }
-                         blockPosition={ blockPosition }
-                         searchStart={ this.searchStart }
-                         addData={ this.addData}
-                      />}
-                  />
-                  <Route path="/search"  render={()=>
-                      <AppCard dataVideo={ dataVideo }
-                               descriptionVideo={ descriptionVideo }
-                               blockPosition={ blockPosition }
-                               itemCardPosition={ itemCardPosition }
-                      />}
-                  />
-                  <Route path="/favorites"  render={()=><Favorites dataSearch={ dataSearch } searchStart={ this.searchStart } saveDataSearch={ this.saveDataSearch }/>}/>
-              </main>
-          </div>
+            { content }
         </BrowserRouter>
     );
   };

@@ -1,0 +1,11 @@
+@import "__button/login__button.css";
+@import "__paragraph/login__paragraph.css";
+@import "__input/login__input.css";
+@import "__content-title/login__content-title.css";
+@import "__logo/login__logo.css";
+
+.login {
+    max-width: 300px;
+    height: 40vh;
+    margin: auto;
+}

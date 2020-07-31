@@ -32,7 +32,7 @@ class AppHeader extends Component {
                     </NavLink>
                     <Menu className="header__menu" selectedKeys={[current]} mode="horizontal">
                         <Menu.Item >
-                            <NavLink className="header__link" to="/search" rel="noopener noreferrer">
+                            <NavLink className="header__link" to="/" rel="noopener noreferrer">
                                 Поиск
                             </NavLink>
                         </Menu.Item>
