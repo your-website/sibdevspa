@@ -21,40 +21,11 @@ class App extends Component {
     itemCardPosition: 'app-card__item',
     user: false,
     users: [],
-      userName: '',
+    userName: '',
     dataSearch: [
-        // {
-        //     searchWord: 'москва',
-        //     title: 'москва',
-        //     sort: 'date',
-        //     count: 3,
-        //     id: 1
-        // },
-        // {
-        //     searchWord: 'красноярск',
-        //     title: 'красноярск',
-        //     sort: 'date',
-        //     count: 25,
-        //     id: 2
-        //
-        // },
-        // {
-        //     searchWord: 'хабаровск',
-        //     title: 'хабаровск',
-        //     sort: 'date',
-        //     count: 13,
-        //     id: 3
-        //
-        // },
-        // {
-        //     searchWord: 'react',
-        //     title: 'react',
-        //     sort: 'date',
-        //     count: 1,
-        //     id: 4
-        //
-        // },
+
     ],
+    token: '',
   };
 
     searchData = (data) => {
@@ -139,6 +110,7 @@ class App extends Component {
 
     userOk = (login, name) => {
         this.setState({user: login, userName: name});
+        localStorage.setItem('tokensibdev', name);
         this.findDataLocalStorage(name);
     };
 
@@ -146,6 +118,13 @@ class App extends Component {
         const dataSearch = JSON.parse (localStorage.getItem (String(name)));
         if (dataSearch) {
             this.setState({dataSearch});
+        }
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem('tokensibdev');
+        if (token !== undefined && token !== null) {
+            this.userOk(true, token)
         }
     }
 

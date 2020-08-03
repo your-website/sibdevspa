@@ -11,6 +11,7 @@ class AppHeader extends Component {
 
     exit() {
         this.props.userOk(false);
+        localStorage.removeItem('tokensibdev');
     }
 
     render() {
