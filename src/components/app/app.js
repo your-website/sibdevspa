@@ -136,6 +136,7 @@ class App extends Component {
 
     userOk = (login) => {
         this.setState({user: login})
+        console.log(login)
     };
 
   render() {
@@ -176,10 +177,35 @@ class App extends Component {
                   />
               </div>
           );
-
+      let header = user ? <AppHeader userOk={ this.userOk }/> : <Login users={ users } userOk={ this.userOk }/>;
+      let main = user ?
+          <main className="main">
+              <Route path="/search"  render={()=>
+                  <AppSearchVideo searchData={ this.searchData }
+                                  changeBlockPositionAppCard={ this.changeBlockPositionAppCard }
+                                  changeItemPositionAppCard={ this.changeItemPositionAppCard }
+                                  blockPosition={ blockPosition }
+                                  searchStart={ this.searchStart }
+                                  addData={ this.addData}
+                  />}
+              />
+              <Route path="/search"  render={()=>
+                  <AppCard dataVideo={ dataVideo }
+                           descriptionVideo={ descriptionVideo }
+                           blockPosition={ blockPosition }
+                           itemCardPosition={ itemCardPosition }
+                  />}
+              />
+              <Route path="/favorites"  render={()=><Favorites dataSearch={ dataSearch } searchStart={ this.searchStart } saveDataSearch={ this.saveDataSearch }/>}/>
+          </main>
+          : null;
+          
       return (
         <BrowserRouter>
-            { content }
+            <div className="app">
+                { header }
+                { main }
+            </div>
         </BrowserRouter>
     );
   };
