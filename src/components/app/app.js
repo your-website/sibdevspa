@@ -143,13 +143,12 @@ class App extends Component {
 
     const { dataVideo, descriptionVideo, blockPosition, itemCardPosition, dataSearch, user } = this.state;
 
-      const content = user ?
-
+      let content = user ?
           (
               <div className="app">
                   <AppHeader userOk={ this.userOk }/>
                   <main className="main">
-                      <Route path="/"  render={()=>
+                      <Route path="/search"  render={()=>
                           <AppSearchVideo searchData={ this.searchData }
                                           changeBlockPositionAppCard={ this.changeBlockPositionAppCard }
                                           changeItemPositionAppCard={ this.changeItemPositionAppCard }
@@ -158,7 +157,7 @@ class App extends Component {
                                           addData={ this.addData}
                           />}
                       />
-                      <Route path="/"  render={()=>
+                      <Route path="/search"  render={()=>
                           <AppCard dataVideo={ dataVideo }
                                    descriptionVideo={ descriptionVideo }
                                    blockPosition={ blockPosition }
@@ -178,7 +177,7 @@ class App extends Component {
               </div>
           );
 
-    return (
+      return (
         <BrowserRouter>
             { content }
         </BrowserRouter>
