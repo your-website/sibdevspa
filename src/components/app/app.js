@@ -45,13 +45,14 @@ class App extends Component {
           word = data.searchWord;
           count = data.count;
           let sort = `order=${order}&`;
-          fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&${sort}q=${word}&key=AIzaSyACHODIWiw1_XoiPkjaWJpPGLFu8k5vZwQ`)
+          console.log(sort)
+          fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&${sort}q=${word}&key=AIzaSyDFI2sE7IL0Awn2D7jzRMlvYOW_e7ogaHA`)
               .then(res => res.json())
               .then(res => {
                   this.searchData(res.items);
               });
       }
-      fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&q=${word}&key=AIzaSyACHODIWiw1_XoiPkjaWJpPGLFu8k5vZwQ`)
+      fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&q=${word}&key=AIzaSyDFI2sE7IL0Awn2D7jzRMlvYOW_e7ogaHA`)
           .then(res => res.json())
           .then(res => {
               this.searchData(res.items);
