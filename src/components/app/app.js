@@ -21,38 +21,39 @@ class App extends Component {
     itemCardPosition: 'app-card__item',
     user: false,
     users: [],
+      userName: '',
     dataSearch: [
-        {
-            searchWord: 'москва',
-            title: 'москва',
-            sort: 'date',
-            count: 3,
-            id: 1
-        },
-        {
-            searchWord: 'красноярск',
-            title: 'красноярск',
-            sort: 'date',
-            count: 25,
-            id: 2
-
-        },
-        {
-            searchWord: 'хабаровск',
-            title: 'хабаровск',
-            sort: 'date',
-            count: 13,
-            id: 3
-
-        },
-        {
-            searchWord: 'react',
-            title: 'react',
-            sort: 'date',
-            count: 1,
-            id: 4
-
-        },
+        // {
+        //     searchWord: 'москва',
+        //     title: 'москва',
+        //     sort: 'date',
+        //     count: 3,
+        //     id: 1
+        // },
+        // {
+        //     searchWord: 'красноярск',
+        //     title: 'красноярск',
+        //     sort: 'date',
+        //     count: 25,
+        //     id: 2
+        //
+        // },
+        // {
+        //     searchWord: 'хабаровск',
+        //     title: 'хабаровск',
+        //     sort: 'date',
+        //     count: 13,
+        //     id: 3
+        //
+        // },
+        // {
+        //     searchWord: 'react',
+        //     title: 'react',
+        //     sort: 'date',
+        //     count: 1,
+        //     id: 4
+        //
+        // },
     ],
   };
 
@@ -70,14 +71,12 @@ class App extends Component {
       let word = search;
       if (favorites) {
           const data = this.state.dataSearch.find(ele => ele.title === search);
-          console.log(data)
           word = data.searchWord;
           count = data.count;
           let sort = `order=${order}&`;
           fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&${sort}q=${word}&key=AIzaSyACHODIWiw1_XoiPkjaWJpPGLFu8k5vZwQ`)
               .then(res => res.json())
               .then(res => {
-                  console.log(res)
                   this.searchData(res.items);
               });
       }
@@ -135,51 +134,25 @@ class App extends Component {
             id
         });
         this.setState({dataSearch: result})
+        localStorage.setItem(String(this.state.userName), JSON.stringify(result))
     };
 
-    userOk = (login) => {
-        this.setState({user: login})
-        console.log(login)
+    userOk = (login, name) => {
+        this.setState({user: login, userName: name});
+        this.findDataLocalStorage(name);
     };
 
-  render() {
-    const users = login.users;
+    findDataLocalStorage(name) {
+        const dataSearch = JSON.parse (localStorage.getItem (String(name)));
+        if (dataSearch) {
+            this.setState({dataSearch});
+        }
+    }
 
-    const { dataVideo, descriptionVideo, blockPosition, itemCardPosition, dataSearch, user } = this.state;
+    render() {
+      const users = login.users;
 
-      let content = user ?
-          (
-              <div className="app">
-                  <AppHeader userOk={ this.userOk }/>
-                  <main className="main">
-                      <Route path="/search"  render={()=>
-                          <AppSearchVideo searchData={ this.searchData }
-                                          changeBlockPositionAppCard={ this.changeBlockPositionAppCard }
-                                          changeItemPositionAppCard={ this.changeItemPositionAppCard }
-                                          blockPosition={ blockPosition }
-                                          searchStart={ this.searchStart }
-                                          addData={ this.addData}
-                          />}
-                      />
-                      <Route path="/search"  render={()=>
-                          <AppCard dataVideo={ dataVideo }
-                                   descriptionVideo={ descriptionVideo }
-                                   blockPosition={ blockPosition }
-                                   itemCardPosition={ itemCardPosition }
-                          />}
-                      />
-                      <Route path="/favorites"  render={()=><Favorites dataSearch={ dataSearch } searchStart={ this.searchStart } saveDataSearch={ this.saveDataSearch }/>}/>
-                  </main>
-              </div>
-          ) :
-          (
-              <div className="app">
-                  <Route path="/login"  render={()=>
-                      <Login users={ users } userOk={ this.userOk }
-                      />}
-                  />
-              </div>
-          );
+      const { dataVideo, descriptionVideo, blockPosition, itemCardPosition, dataSearch, user } = this.state;
       let header = user ? <AppHeader userOk={ this.userOk }/> : <Login users={ users } userOk={ this.userOk }/>;
       let main = user ?
           <main className="main">

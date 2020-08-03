@@ -21,7 +21,7 @@ class Login extends Component {
     userLogin() {
         this.props.users.forEach(ele => {
             if (ele.user === this.state.login && ele.password === this.state.password) {
-                this.props.userOk(true);
+                this.props.userOk(true, ele.user);
             }
         });
     }

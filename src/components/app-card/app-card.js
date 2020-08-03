@@ -9,7 +9,6 @@ class AppCard extends Component {
 
     render() {
         const { dataVideo, blockPosition, itemCardPosition } = this.props;
-        console.log(dataVideo)
         const elements = dataVideo.map((item) => {
             const { id } = item;
             const { videoId } = id;
