@@ -25,14 +25,14 @@ class App extends Component {
         {
             searchWord: 'москва',
             title: 'москва',
-            sort: 'rating',
+            sort: 'date',
             count: 3,
             id: 1
         },
         {
             searchWord: 'красноярск',
             title: 'красноярск',
-            sort: 'rating',
+            sort: 'date',
             count: 25,
             id: 2
 
@@ -40,7 +40,7 @@ class App extends Component {
         {
             searchWord: 'хабаровск',
             title: 'хабаровск',
-            sort: 'rating',
+            sort: 'date',
             count: 13,
             id: 3
 
@@ -48,7 +48,7 @@ class App extends Component {
         {
             searchWord: 'react',
             title: 'react',
-            sort: 'rating',
+            sort: 'date',
             count: 1,
             id: 4
 
@@ -65,20 +65,23 @@ class App extends Component {
   };
 
   searchStart = (search, favorites, order) => {
+
       let count = 12;
       let word = search;
       if (favorites) {
           const data = this.state.dataSearch.find(ele => ele.title === search);
+          console.log(data)
           word = data.searchWord;
           count = data.count;
           let sort = `order=${order}&`;
-          fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&${sort}q=${word}&key=AIzaSyAAzHm2B7WC2O6w8y3_8RGdWrMcVSUugV8`)
+          fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&${sort}q=${word}&key=AIzaSyACHODIWiw1_XoiPkjaWJpPGLFu8k5vZwQ`)
               .then(res => res.json())
               .then(res => {
+                  console.log(res)
                   this.searchData(res.items);
               });
       }
-      fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&q=${word}&key=AIzaSyAAzHm2B7WC2O6w8y3_8RGdWrMcVSUugV8`)
+      fetch(`https://www.googleapis.com/youtube/v3/search?maxResults=${count}&q=${word}&key=AIzaSyACHODIWiw1_XoiPkjaWJpPGLFu8k5vZwQ`)
           .then(res => res.json())
           .then(res => {
               this.searchData(res.items);
@@ -199,7 +202,7 @@ class App extends Component {
               <Route path="/favorites"  render={()=><Favorites dataSearch={ dataSearch } searchStart={ this.searchStart } saveDataSearch={ this.saveDataSearch }/>}/>
           </main>
           : null;
-          
+
       return (
         <BrowserRouter>
             <div className="app">
